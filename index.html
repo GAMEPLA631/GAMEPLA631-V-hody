@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMEPLA631 Výhody</title>
+    <!-- Použitie Tailwind CSS pre moderný a rýchly dizajn -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #1a1a1a; /* Tmavé pozadie */
+        }
+
+        /* Vlastné animácie pre plynulé efekty */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .timer-container {
+            /* Ponechaný tmavý gradient, ktorý sa hodí k téme */
+            background: linear-gradient(135deg, #1f2937, #4b5563);
+        }
+
+        .form-section {
+            background: #2d2d2d; /* Tmavší odtieň pre sekciu formulára */
+        }
+    </style>
+</head>
+<body class="bg-gray-950 flex items-center justify-center min-h-screen p-4">
+
+    <!-- Hlavný kontajner stránky -->
+    <div class="bg-gray-800 text-gray-200 rounded-3xl shadow-2xl overflow-hidden max-w-4xl w-full p-8 space-y-12 fade-in">
+        
+        <!-- Sekcia s hlavičkou a úvodom -->
+        <header class="text-center space-y-4">
+            <h1 class="text-5xl font-extrabold text-white leading-tight">GAMEPLA631 Výhody</h1>
+            <p class="text-xl text-gray-400">
+                Tvoja cesta k neobmedzeným herným zážitkom.
+            </p>
+        </header>
+
+        <!-- Sekcia s ponukou a výhodami -->
+        <section class="grid md:grid-cols-2 gap-10 items-start">
+            <div class="space-y-6">
+                <h2 class="text-3xl font-bold text-gray-100">Čo získam s GAMEPLA631 Predplatným?</h2>
+                <ul class="space-y-4 text-gray-300 list-none p-0">
+                    <li class="flex items-center space-x-3">
+                        <span class="text-green-500 text-2xl">✓</span>
+                        <p><strong>Neobmedzený prístup:</strong> Sťahuj a používaj všetky naše produkty po dobu 8 rokov.</p>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-green-500 text-2xl">✓</span>
+                        <p><strong>Permanentné "Mince":</strong> Získaj neobmedzené množstvo <span class="font-bold text-yellow-500">Nemozeneno Coins</span> na nákup exkluzívnych produktov.</p>
+                    </li>
+                    <li class="flex items-center space-x-3">
+                        <span class="text-green-500 text-2xl">✓</span>
+                        <p><strong>Exkluzívne ponuky:</strong> Prednostný prístup k novým hrám a obsahu.</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-2xl shadow-inner space-y-4">
+                <h3 class="text-2xl font-semibold text-gray-100">Ako to funguje?</h3>
+                <p class="text-gray-300">
+                    Vyplň formulár, zaplať jednorazovo <strong class="text-green-400">10,99 €</strong> a okamžite získaj prístup ku všetkým výhodám na celých 8 rokov.
+                </p>
+            </div>
+        </section>
+
+        <!-- Sekcia s časovačom permanentky -->
+        <section class="timer-container text-center text-white p-8 rounded-3xl shadow-xl">
+            <h2 class="text-3xl font-bold mb-4">Tvoja permanentka je už pripravená!</h2>
+            <div class="text-2xl font-light text-gray-300 mb-6" id="status-message">
+                Pre aktiváciu vyplň formulár nižšie.
+            </div>
+            <div class="flex justify-center items-center space-x-4 text-center">
+                <div class="flex flex-col items-center">
+                    <div id="days-left" class="text-6xl font-extrabold text-white">2920</div>
+                    <div class="text-sm text-gray-300">dní</div>
+                </div>
+                <div class="text-4xl text-gray-400 font-light">:</div>
+                <div class="flex flex-col items-center">
+                    <div id="hours-left" class="text-6xl font-extrabold text-white">0</div>
+                    <div class="text-sm text-gray-300">hodín</div>
+                </div>
+                <div class="text-4xl text-gray-400 font-light">:</div>
+                <div class="flex flex-col items-center">
+                    <div id="minutes-left" class="text-6xl font-extrabold text-white">0</div>
+                    <div class="text-sm text-gray-300">minút</div>
+                </div>
+                <div class="text-4xl text-gray-400 font-light">:</div>
+                <div class="flex flex-col items-center">
+                    <div id="seconds-left" class="text-6xl font-extrabold text-white">0</div>
+                    <div class="text-sm text-gray-300">sekúnd</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sekcia s formulárom -->
+        <section class="form-section p-8 rounded-3xl shadow-xl space-y-8">
+            <h2 class="text-3xl font-bold text-center text-gray-100">Objednaj si svoje predplatné teraz!</h2>
+            <form id="subscription-form" class="space-y-6">
+                <div>
+                    <label for="name" class="block text-sm font-medium text-gray-300">Meno a priezvisko</label>
+                    <input type="text" id="name" class="mt-1 block w-full px-4 py-3 bg-gray-700 text-white border border-gray-600 rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-300">E-mailová adresa</label>
+                    <input type="email" id="email" class="mt-1 block w-full px-4 py-3 bg-gray-700 text-white border border-gray-600 rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-300">Heslo</label>
+                    <input type="password" id="password" class="mt-1 block w-full px-4 py-3 bg-gray-700 text-white border border-gray-600 rounded-xl shadow-sm focus:ring-blue-500 focus:border-blue-500" required>
+                </div>
+                <div class="flex items-center">
+                    <input id="terms" type="checkbox" class="h-4 w-4 text-blue-600 bg-gray-700 border-gray-600 rounded focus:ring-blue-500" required>
+                    <label for="terms" class="ml-2 block text-sm text-gray-300">
+                        Súhlasím s obchodnými podmienkami a podmienkami používania.
+                    </label>
+                </div>
+                <button type="submit" class="w-full flex justify-center items-center py-4 px-6 border border-transparent rounded-full shadow-sm text-lg font-bold text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors">
+                    KÚPIŤ PREDPLATNÉ ZA 10,99 €
+                </button>
+                <div id="form-message" class="text-center mt-4 text-lg font-medium hidden"></div>
+            </form>
+        </section>
+        
+        <!-- Päta stránky -->
+        <footer class="text-center text-gray-500 text-sm mt-12">
+            © 2025 GAMEPLA631 Všetky práva vyhradené.
+        </footer>
+    </div>
+
+    <!-- JavaScript pre odpočítavanie a formulár -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('subscription-form');
+            const formMessage = document.getElementById('form-message');
+            const statusMessage = document.getElementById('status-message');
+            const daysLeftEl = document.getElementById('days-left');
+            const hoursLeftEl = document.getElementById('hours-left');
+            const minutesLeftEl = document.getElementById('minutes-left');
+            const secondsLeftEl = document.getElementById('seconds-left');
+
+            const DURATION_DAYS = 8 * 365; // 8 rokov
+            let timerInterval;
+
+            // Funkcia na aktualizáciu časovača
+            function updateTimer() {
+                // Získame dátum aktivácie z lokálneho úložiska
+                const startDate = localStorage.getItem('subscription_start_date');
+                if (!startDate) {
+                    // Ak nie je aktivované, zobrazíme predvolené hodnoty
+                    daysLeftEl.textContent = DURATION_DAYS;
+                    hoursLeftEl.textContent = "0";
+                    minutesLeftEl.textContent = "0";
+                    secondsLeftEl.textContent = "0";
+                    return;
+                }
+
+                // Vypočítame zostávajúci čas
+                const totalDurationMs = DURATION_DAYS * 24 * 60 * 60 * 1000;
+                const elapsedTimeMs = Date.now() - new Date(startDate).getTime();
+                const remainingTimeMs = Math.max(0, totalDurationMs - elapsedTimeMs);
+
+                const days = Math.floor(remainingTimeMs / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((remainingTimeMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((remainingTimeMs % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((remainingTimeMs % (1000 * 60)) / 1000);
+
+                // Aktualizujeme prvky na stránke
+                daysLeftEl.textContent = days;
+                hoursLeftEl.textContent = hours.toString().padStart(2, '0');
+                minutesLeftEl.textContent = minutes.toString().padStart(2, '0');
+                secondsLeftEl.textContent = seconds.toString().padStart(2, '0');
+
+                // Ak čas vypršal, zastavíme časovač
+                if (remainingTimeMs <= 0) {
+                    clearInterval(timerInterval);
+                    statusMessage.textContent = "Platnosť tvojej permanentky vypršala.";
+                    form.style.display = 'none'; // Skryjeme formulár
+                }
+            }
+
+            // Spustíme časovač každú sekundu
+            timerInterval = setInterval(updateTimer, 1000);
+
+            // Spracovanie odoslania formulára
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(); // Zabránime štandardnému odoslaniu formulára
+
+                // Skontrolujeme, či je permanentka už aktivovaná
+                if (localStorage.getItem('subscription_start_date')) {
+                    formMessage.textContent = "Tvoja permanentka je už aktívna!";
+                    formMessage.className = "text-center mt-4 text-lg font-medium text-blue-500 block";
+                    return;
+                }
+
+                // Simulujeme odoslanie a uloženie do lokálneho úložiska
+                localStorage.setItem('subscription_start_date', new Date().toISOString());
+                
+                // Zobrazíme správu o úspešnej aktivácii
+                formMessage.textContent = "Ďakujeme! Tvoja permanentka je aktívna. Začíname odpočítavanie!";
+                formMessage.className = "text-center mt-4 text-lg font-medium text-green-500 block";
+                
+                // Aktualizujeme stav časovača a skryjeme formulár
+                statusMessage.textContent = "Zostáva ti:";
+                form.style.display = 'none';
+                
+                // Znovu spustíme časovač s novým dátumom
+                updateTimer();
+            });
+
+            // Po načítaní stránky skontrolujeme stav a nastavíme časovač
+            const startDate = localStorage.getItem('subscription_start_date');
+            if (startDate) {
+                statusMessage.textContent = "Zostáva ti:";
+                form.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
